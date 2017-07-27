@@ -6,3 +6,5 @@ mysqlclient
 celery[redis]
 redis
 django-celery-beat
+gunicorn
+gevent
