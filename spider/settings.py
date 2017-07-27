@@ -157,3 +157,9 @@ CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_TASK_SERIALIZER = 'pickle'
 CELERY_RESULT_SERIALIZER = 'pickle'
 CELERY_ACCEPT_CONTENT = ['pickle']
+
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass

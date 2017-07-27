@@ -6,7 +6,8 @@ WORKDIR /code/
 
 ADD requirements.txt .
 
-RUN pip install -r requirements -i https://pypi.douban.com/simple/
+RUN pip install -r requirements.txt -i https://pypi.douban.com/simple/
 
 ADD . /code/
 
+ENTRYPOINT ["sh", "entry.sh"]
