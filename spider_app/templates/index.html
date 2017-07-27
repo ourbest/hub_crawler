@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章列表</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.js"></script>
+
+</head>
+<body>
+<div class="ui container">
+    <h3 style="text-align:center; margin-top: 50px;">{{ project.name }} 文章列表</h3>
+    <div class="ui secondary pointing menu">
+        {% for proj in projects %}
+            {% if proj.name == project.name %}
+                <a class="active item">{{ proj.name }}</a>
+            {% else %}
+                <a class="item" href="?project={{ proj.name }}">{{ proj.name }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <table class="ui celled striped table">
+        <thead>
+        <tr>
+            <th>文章</th>
+            <th>抓取时间</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td><a href="{{ item.url }}" target="_blank">{{ item.title }}</a></td>
+                <td>{{ item.created_at }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div>只列出最近的100条</div>
+</div>
+</body>
+</html>

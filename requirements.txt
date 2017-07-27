@@ -1,0 +1,8 @@
+django
+requests
+beautifulsoup4
+lxml
+mysqlclient
+celery[redis]
+redis
+django-celery-beat
