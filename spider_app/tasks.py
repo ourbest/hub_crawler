@@ -20,6 +20,7 @@ def add_to_crawler(entry, link, title):
 def scan_hub():
     logger.info('扫描Hub页')
     for ep in EntryPoint.objects.filter(status=0):
+        logger.info('Hub %s', ep)
         if ep.last_exec_time:
             freq = ep.default_freq if ep.default_freq else 5 * 60
             now = timezone.now()
