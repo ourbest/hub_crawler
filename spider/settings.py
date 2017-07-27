@@ -158,6 +158,7 @@ CELERY_TASK_SERIALIZER = 'pickle'
 CELERY_RESULT_SERIALIZER = 'pickle'
 CELERY_ACCEPT_CONTENT = ['pickle']
 
+STATIC_ROOT = '/static/'
 
 try:
     from .local_settings import *
