@@ -2,6 +2,10 @@
 
 rm -f celerybeat.pid
 
+python manage.py collectstatic --no-input
+python manage.py migrate
+
+
 celery -A spider beat -l info -S django &
 celery -A spider --concurrency=1 -n worker@%h worker &
 
