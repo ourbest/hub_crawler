@@ -8,3 +8,5 @@ redis
 django-celery-beat
 gunicorn
 gevent
+django-bootstrap3
+django-flat-responsive
