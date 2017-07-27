@@ -12,4 +12,6 @@ RUN pip install -r requirements.txt -i https://pypi.douban.com/simple/
 
 ADD . /code/
 
+ADD conf/nginx.conf /etc/nginx/sites-available/default
+
 ENTRYPOINT ["sh", "entry.sh"]
