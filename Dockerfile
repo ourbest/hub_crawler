@@ -1,5 +1,7 @@
 FROM python:3
 
+RUN apt-get update && apt-get install -y nginx
+
 RUN mkdir /code/
 WORKDIR /code/
 
