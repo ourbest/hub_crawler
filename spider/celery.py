@@ -24,4 +24,5 @@ class HubThread(threading.Thread):
             from spider_app import tasks
             tasks.scan_hub.delay()
 
-HubThread().start()
+if os.environ.get('C_TASK') == '1':
+    HubThread().start()

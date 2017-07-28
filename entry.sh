@@ -7,7 +7,7 @@ python manage.py migrate
 
 
 export C_FORCE_ROOT=1
-celery -A spider beat -l info -S django &
+C_TASK=1 celery -A spider beat -l info -S django &
 celery -A spider --concurrency=1 -n worker@%h worker &
 
 nginx
