@@ -14,7 +14,7 @@
     <div class="ui secondary pointing menu">
         {% for proj in projects %}
             {% if proj.name == project.name %}
-                <a class="active item">{{ proj.name }}</a>
+                <a class="active item" href="?project={{ proj.name }}">{{ proj.name }}</a>
             {% else %}
                 <a class="item" href="?project={{ proj.name }}">{{ proj.name }}</a>
             {% endif %}
@@ -32,7 +32,7 @@
         {% for item in items %}
             <tr>
                 <td><a href="{{ item.url }}" target="_blank" rel="noreferrer">{{ item.title }}</a></td>
-                <td>{{ item.entry.name }}</td>
+                <td><a href="?project={{ project.name }}&entry={{ item.entry.id }}">{{ item.entry.name }}</a></td>
                 <td>{{ item.created_at }}</td>
             </tr>
         {% endfor %}
