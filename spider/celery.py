@@ -22,6 +22,6 @@ class HubThread(threading.Thread):
         while True:
             sleep(60)
             from spider_app import tasks
-            tasks.scan_hub()
+            tasks.scan_hub.delay()
 
 HubThread().start()
