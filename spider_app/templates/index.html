@@ -24,6 +24,7 @@
         <thead>
         <tr>
             <th>文章</th>
+            <th>来源</th>
             <th>抓取时间</th>
         </tr>
         </thead>
@@ -31,6 +32,7 @@
         {% for item in items %}
             <tr>
                 <td><a href="{{ item.url }}" target="_blank">{{ item.title }}</a></td>
+                <td>{{ item.entry.name }}</td>
                 <td>{{ item.created_at }}</td>
             </tr>
         {% endfor %}
