@@ -1,9 +1,10 @@
 import re
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin, urlunparse
 
 import requests
 from bs4 import BeautifulSoup
 from django.utils import timezone
+from os.path import normpath
 
 from spider_app import utils
 from spider_app.models import Item, EntryPoint
@@ -67,9 +68,18 @@ def parse_hub_entry(entry):
             if link.has_attr('href'):
                 title = link.get_text()
                 link = link['href']
+                if link and -1 == link.find('://'):
+                    link = join_url(entry.url, link)
                 if title and title.strip() and link not in old_items and re.search(entry.url_pattern, link):
                     from .tasks import add_to_crawler
                     add_to_crawler.delay(entry, link, title)
+
+
+def join_url(base, url):
+    temp_url = urljoin(base, url)
+    arr = urlparse(temp_url)
+    path = normpath(arr[2])
+    return urlunparse((arr.scheme, arr.netloc, path, arr.params, arr.query, arr.fragment))
 
 
 def _check_dup(url):
