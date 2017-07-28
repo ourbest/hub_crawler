@@ -13,10 +13,11 @@ def pages(request):
     else:
         project = Project.objects.filter(name=project_name).first()
 
+    size = 200
     if entry_id:
-        items = Item.objects.filter(entry_id=entry_id).order_by("-pk")[0:100]
+        items = Item.objects.filter(entry_id=entry_id).order_by("-pk")[0:size]
     else:
-        items = Item.objects.filter(entry__project_id=project.id).order_by("-pk")[0:100] if project else []
+        items = Item.objects.filter(entry__project_id=project.id).order_by("-pk")[0:size] if project else []
 
     return render(request, "index.html", context={
         'project': project,
