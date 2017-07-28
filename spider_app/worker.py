@@ -70,7 +70,8 @@ def parse_hub_entry(entry):
                 link = link['href']
                 if link and -1 == link.find('://'):
                     link = join_url(entry.url, link)
-                if title and title.strip() and link not in old_items and re.search(entry.url_pattern, link):
+                if title and title.strip() and len(title) > 3 \
+                        and link not in old_items and re.search(entry.url_pattern, link):
                     from .tasks import add_to_crawler
                     add_to_crawler.delay(entry, link, title)
 
