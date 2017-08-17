@@ -18,7 +18,7 @@ def add_to_crawler(entry, link, title):
 
 @shared_task
 def scan_hub():
-    logger.info('扫描Hub页')
+    logger.info('扫描Hub页Begin')
     for ep in EntryPoint.objects.filter(status=0):
         logger.info('Hub %s', ep)
         if ep.last_exec_time:
@@ -29,3 +29,4 @@ def scan_hub():
 
         from spider_app.worker import parse_hub_entry
         parse_hub_entry(ep)
+    logger.info('扫描Hub页Done.')

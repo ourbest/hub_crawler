@@ -73,7 +73,8 @@ def parse_hub_entry(entry):
                 if title and title.strip() and len(title) > 3 \
                         and link not in old_items and re.search(entry.url_pattern, link):
                     from .tasks import add_to_crawler
-                    add_to_crawler.delay(entry, link, title)
+                    # add_to_crawler.delay(entry, link, title)
+                    add_to_crawler(entry, link, title)
 
 
 def join_url(base, url):
