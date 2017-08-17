@@ -11,6 +11,7 @@ export C_FORCE_ROOT=1
 #celery -A spider --concurrency=1 -n worker@%h worker &
 
 nginx
-
+python manage.py worker &
+#export C_TASK=1
 gunicorn -k gevent -b 0.0.0.0:8000 --access-logfile /dev/null spider.wsgi:application
 
