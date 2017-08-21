@@ -1,10 +1,10 @@
 import re
+from os.path import normpath
 from urllib.parse import urlparse, urljoin, urlunparse
 
 import requests
 from bs4 import BeautifulSoup
 from django.utils import timezone
-from os.path import normpath
 
 from spider_app import utils
 from spider_app.models import Item, EntryPoint
@@ -75,6 +75,7 @@ def parse_hub_entry(entry):
                     from .tasks import add_to_crawler
                     # add_to_crawler.delay(entry, link, title)
                     add_to_crawler(entry, link, title)
+    logger.info("抓取HUB页 %s done.", entry.name)
 
 
 def join_url(base, url):
