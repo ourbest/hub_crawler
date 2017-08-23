@@ -26,7 +26,11 @@ def crawler(url):
 
     parsed_uri = urlparse(url)
     sess = _get_session(parsed_uri.netloc)
-    return sess.get(url, timeout=(10, 30))
+    try:
+        return sess.get(url, timeout=(10, 30))
+    except:
+        logger.warning('error crawler url %s' % url, exc_info=1)
+        return None
 
 
 def _get_title(entry, bs):
