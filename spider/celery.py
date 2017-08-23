@@ -28,7 +28,7 @@ class HubThread(threading.Thread):
                 from spider_app import tasks
                 tasks.scan_hub()
             except:
-                logger.warn('hub task error', exc_info=1)
+                logger.warning('hub task error', exc_info=1)
 
 
 if os.environ.get('C_TASK') == '1':

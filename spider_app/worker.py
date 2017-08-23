@@ -26,7 +26,7 @@ def crawler(url):
 
     parsed_uri = urlparse(url)
     sess = _get_session(parsed_uri.netloc)
-    return sess.get(url)
+    return sess.get(url, timeout=(10, 30))
 
 
 def _get_title(entry, bs):
